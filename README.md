@@ -31,11 +31,7 @@ This command will start the React application on `http://localhost:3000`. Do not
 **Back-end**
 
 ```bash
-# ensure you have virtualend
-$ pip install virtualenv
-
 $ cd /src/api
-$ %HOMEPATH%/crm-virt/Scripts/activate
 $ python .\manage.py migrate
 $ python .\manage.py runserver
 
