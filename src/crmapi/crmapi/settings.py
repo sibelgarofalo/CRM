@@ -25,7 +25,10 @@ SECRET_KEY = 'django-insecure-rh0y%h7hlc^%pw*r99^t*ka0%%y(s!e50qjgcosaij#i+-pq^&
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    'sibel-crm-api.us-east-1.elasticbeanstalk.com',
+    '127.0.0.1'
+]
 
 
 # Application definition
