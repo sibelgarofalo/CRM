@@ -4,11 +4,11 @@ param (
     $bucketname
 )
 if ($stackname.Length -eq 0) {
-    Write-Error "Parameter --stackname is mandatory"
+    Write-Error "Parameter -stackname is mandatory"
     exit
 }
 if ($bucketname.Length -eq 0) {
-    Write-Error "Parameter --bucketname is mandatory"
+    Write-Error "Parameter -bucketname is mandatory"
     exit
 }
 
