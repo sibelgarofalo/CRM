@@ -4,6 +4,17 @@ This project is a CRM (Contact Management System) built using React.js and Djang
 
 ![Mockup](/docs/img-01.png)
 
+This platform is built using:
+
+ - React.JS v18
+ - ANTD Components
+ - Django and Python 3.8
+ - AWS Services
+
+The platform is deployed on AWS with the following architecture:
+
+![AWS](/docs/img-02.png)
+
 ## Getting started
 
 You can run the project locally, or, you can deploy the project to AWS Elastic Beanstalk and AWS S3 Bucket.
@@ -12,11 +23,11 @@ You can run the project locally, or, you can deploy the project to AWS Elastic B
 
 To code locally, you need two different `Terminal`, one to start the `front-end` and one to start the `back-end`.
 
-**Front-end**
+#### Front-end
 
-```bash
-$ cd /src/web
-$ npm start
+```powershell
+PS> cd /src/web
+PS> npm start
 
 Compiled successfully!
 
@@ -28,12 +39,13 @@ You can now view web in the browser.
 
 This command will start the React application on `http://localhost:3000`. Do not forget to run `npm install` if you just downloaded this repo.
 
-**Back-end**
+#### Back-end
 
-```bash
-$ cd /src/api
-$ python .\manage.py migrate
-$ python .\manage.py runserver
+```powershell
+PS> .\v-env\Scripts\activate
+PS>(v-env) cd /src/crmapi
+PS>(v-env) python .\manage.py migrate
+PS>(v-env) python .\manage.py runserver
 
 Watching for file changes with StatReloader
 Performing system checks...
@@ -50,13 +62,13 @@ This command will run django on `http://localhost:8000/`. `migrate` is needed if
 
  > This guide assume you have already an AWS account and you have already run the `aws configure` on your terminal, in order to be able to build infrastructure and push the code.
 
-**Front-end Cloud formation**
+#### Front-end Cloud formation
 
 The first part of the deployment is to use the Cloud formation stack, to create a new infrastructure. The Cloud formation stack requies a parameter `BucketName` as describe below
 
-```bash
-$ cd /aws
-$ aws cloudformation deploy 
+```powershell
+PS> cd /aws
+PS> aws cloudformation deploy 
    --template-file .\front-end.yaml 
    --stack-name sibel-crm-front 
    --parameter-overrides "BucketNameParameter=sibel-crm-s3"
@@ -64,8 +76,8 @@ $ aws cloudformation deploy
 
 The second script can be used to have CI/CD on your development machine. It will build React and push it to AWS S3 Bucket. It will output the URL of Cloudfront so that you can check what has been deployed.
 
-```bash
-$ .\publish-front.ps1 
+```powershell
+PS> .\publish-front.ps1 
    -stackname sibel-crm-front 
    -bucketname 925885294484-sibel-crm-s3
 
