@@ -3,11 +3,11 @@ import ReactDOM from 'react-dom/client';
 import './index.less';
 
 import { Button } from 'antd';
+import { CrmLayout } from './components';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <h1>Hello</h1>
-    <Button type='primary'>Click here</Button>
+    <CrmLayout />
   </React.StrictMode>
 );
