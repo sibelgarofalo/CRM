@@ -14,9 +14,9 @@ if ($bucketname.Length -eq 0) {
 
 # react
 Write-Host "-> *** Starting React build ***" -ForegroundColor yellow
-npm run build --prefix ..\src\web\
+yarn build --cwd ..\src\crmweb\
 Write-Host "-> *** Publishing to $bucketname ***" -ForegroundColor yellow
-aws s3 sync ..\src\web\build s3://$bucketname
+aws s3 sync ..\src\crmweb\build s3://$bucketname
 
 # done
 Write-Host "-> *** Deployment done ***" -ForegroundColor green

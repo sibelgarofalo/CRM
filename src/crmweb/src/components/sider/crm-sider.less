@@ -1,0 +1,28 @@
+@import '~antd/es/style/themes/default.less';
+
+.crm-sider {
+    border-right: @border-width-base @border-style-base @border-color-base;
+    background-color: @body-background;
+    padding: 16px 0;
+
+    .ant-layout-sider {
+        height: 100%;
+
+        .ant-layout-sider-children {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+
+            .folder-menu {
+                padding: 12px 6px;
+                margin: 0 16px;
+
+                &:hover {
+                    background-color: @dropdown-selected-bg;
+                    color: @dropdown-selected-color;
+                }
+            }
+        }
+    }
+
+}
