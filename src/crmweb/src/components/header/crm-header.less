@@ -1,1 +1,27 @@
-.crm-header {}
+@import '~antd/es/style/themes/default.less';
+
+.crm-header {
+    .crm-header-content {
+        background-color: white;
+        border-bottom: @border-width-base @border-style-base @border-color-base;
+        padding: 0 36px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        .logo {
+            background-image: url('/assets/logo.png');
+            height: 64px;
+            width: 160px;
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: left;
+        }
+
+        .commands {
+            display: flex;
+            gap: 16px;
+            align-items: center;
+        }
+    }
+}
