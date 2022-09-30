@@ -8,7 +8,7 @@ import './crm-layout.less';
 const CrmLayout = (props) => {
     return (
         <div className="crm-layout">
-            <Layout>
+            <Layout className='main-layout'>
                 <CrmHeader />
                 <Layout>
                     <CrmSider />

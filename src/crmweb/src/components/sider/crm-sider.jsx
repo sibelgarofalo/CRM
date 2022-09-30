@@ -87,13 +87,13 @@ const CrmSider = (props) => {
                 />
                 {collapsed &&
                     <RightOutlined
-                        style={{ fontSize: 16 }}
+                        style={{ fontSize: 14 }}
                         className='folder-menu'
                         onClick={() => setCollapsed(false)} />
                 }
                 {!collapsed &&
                     <LeftOutlined
-                        style={{ fontSize: 16 }}
+                        style={{ fontSize: 14 }}
                         className='folder-menu'
                         onClick={() => setCollapsed(true)} />
                 }
