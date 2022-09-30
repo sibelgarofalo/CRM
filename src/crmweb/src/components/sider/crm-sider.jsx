@@ -1,10 +1,11 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { Layout, Menu } from 'antd';
 import {
     DashboardOutlined, CustomerServiceOutlined, SearchOutlined, FileAddOutlined,
     DollarOutlined, OrderedListOutlined,
-    MenuFoldOutlined, LeftOutlined,
-    MenuUnfoldOutlined, RightOutlined
+    LeftOutlined,
+    RightOutlined
 } from '@ant-design/icons';
 
 import './crm-sider.less';
@@ -66,10 +67,33 @@ const items = [
 const CrmSider = (props) => {
 
     const [collapsed, setCollapsed] = useState(false);
+    const [menuSelected, setMenuSelected] = useState('dashboard');
+    const [subMenuSelected, setSubMenuSelected] = useState('dashboard-sales');
+    const navigate = useNavigate();
+    const location = useLocation();
 
     const onClick = (args) => {
-        console.log(args);
+        const path = args.keyPath.reverse().join('/');
+        setMenuSelected(args.keyPath[0]);
+        setSubMenuSelected(args.keyPath[1]);
+        navigate(path);
     }
+
+    const onOpenChange = (args) => {
+        setMenuSelected(args[1])
+    }
+
+    useEffect(() => {
+        if (location.pathname.length > 1) {
+            // we select correct menu item
+            const paths = location.pathname.split('/');
+            setMenuSelected(paths[1]);
+            setSubMenuSelected(paths[2]);
+        } else {
+            // root path, we redirect on page refresh
+            navigate(`${menuSelected}/${subMenuSelected}`);
+        }
+    }, []);
 
     return (
         <div className='crm-sider'>
@@ -80,8 +104,11 @@ const CrmSider = (props) => {
                 trigger={null}>
                 <Menu
                     onClick={onClick}
-                    defaultSelectedKeys={['dashboard-sales']}
-                    defaultOpenKeys={['dashboard']}
+                    onOpenChange={onOpenChange}
+                    selectedKeys={[subMenuSelected]}
+                    openKeys={[menuSelected]}
+                    defaultSelectedKeys={[subMenuSelected]}
+                    defaultOpenKeys={[menuSelected]}
                     mode="inline"
                     items={items}
                 />

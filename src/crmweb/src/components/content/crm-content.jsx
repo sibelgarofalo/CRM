@@ -1,10 +1,12 @@
 import { useState } from 'react';
+import { useLocation } from 'react-router-dom';
 import { Layout, Breadcrumb, Input, Button, Radio } from 'antd';
 
 import './crm-content.less';
 import {
     FilterOutlined, FileAddOutlined, DeleteOutlined, EditOutlined
 } from '@ant-design/icons';
+import CrmRouter from '../router/crm-router';
 
 const recordOptions = [
     {
@@ -22,8 +24,17 @@ const recordOptions = [
     }
 ]
 
+const formatPath = (path) => {
+    if (!path.includes('-')) {
+        return path ? path.charAt(0).toUpperCase() + path.slice(1) : "";
+    }
+    path = path.replace('-', ' ');
+    return path.toLowerCase().replace(/(^.|\s+.)/g, m => m.toUpperCase());
+}
+
 const CrmContent = (props) => {
     const [option, setOption] = useState('all');
+    const location = useLocation();
 
     return (
         <div className='crm-content'>
@@ -37,8 +48,11 @@ const CrmContent = (props) => {
                 </Layout.Header>
                 <div className='content-header'>
                     <Breadcrumb className='breadcrumb'>
-                        <Breadcrumb.Item>Customers</Breadcrumb.Item>
-                        <Breadcrumb.Item>Find Customers</Breadcrumb.Item>
+                        {
+                            location.pathname
+                                .split('/')
+                                .map(item => <Breadcrumb.Item key={item}>{formatPath(item)}</Breadcrumb.Item>)
+                        }
                     </Breadcrumb>
                     <div className='commands-group'>
                         <Radio.Group
@@ -54,7 +68,7 @@ const CrmContent = (props) => {
                     </div>
                 </div>
                 <Layout.Content className='content'>
-                    Content
+                    <CrmRouter />
                 </Layout.Content>
             </Layout>
         </div>
