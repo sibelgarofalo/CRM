@@ -2,6 +2,8 @@
 
 This project is a CRM (Contact Management System) built using React.js and Django Python. The application allows you to manage contacts, appointments, orders and products.
 
+ > A demo is available [here on AWS](https://d1jmoh2n1qnkep.cloudfront.net)!
+
 ![Mockup](/docs/img-01.png)
 
 This platform is built using:
